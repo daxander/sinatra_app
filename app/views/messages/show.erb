@@ -1,4 +1,4 @@
-<h1><%= @message.title %></h1>
+<h1><%= @message.id %></h1>
 
 <p>
   Author: <%= @message.author %>
@@ -8,5 +8,17 @@
   <%= @message.content  %>
 </p>
 
-<hr/>
+<p> URL: <a href="<%= @message.url %>"><%= @message.url %></a></p>
+
+<h3>Other Messages From This Author</h3>
+
+<p><%Message.where(:author => @message.author).where.not(:id => @message.id).all.each do |message| %>
+ <p> <%= message.content %></p>
+ <a href="<%= @message.url %>">
+ <p> <%= message.url %></p></a>
+  <% end %>
+  </p>
+
+
+
 <a href="/messages">Back to All Messages</a>

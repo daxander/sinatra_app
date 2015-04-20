@@ -1,0 +1,7 @@
+<h1>All Posts by me</h1>
+
+<%Message.where(:author => @message.author).all.each do |message| %>
+  <%= message.content %>
+  <% end %>
+
+  <a href="/messages">Back to All Messages</a>
